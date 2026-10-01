@@ -435,8 +435,7 @@ jobs:
           # sed -i '/intl:/a \ \ archive: ^3.6.1' ./flutter/pubspec.yaml
           wget https://raw.githubusercontent.com/newsnake81/rdgen/refs/heads/master/.github/patches/hidecm.diff
           git apply hidecm.diff
-          wget https://raw.githubusercontent.com/newsnake81/rdgen/refs/heads/master/.github/patches/androidscreen.diff
-          git apply --3way androidscreen.diff
+          wget -T 30 -t 3 -O ./flutter/lib/mobile/pages/remote_page.dart https://raw.githubusercontent.com/newsnake81/rustdesk/master/flutter/lib/mobile/pages/remote_page.dart
 
       - name: Remove scam alert on Android
         shell: bash
