@@ -1,16 +1,15 @@
 diff --git a/flutter/lib/mobile/pages/remote_page.dart b/flutter/lib/mobile/pages/remote_page.dart
-index edcfe2bca..7cef8a77a 100644
+index edcfe2bca..db32975b2 100644
 --- a/flutter/lib/mobile/pages/remote_page.dart
 +++ b/flutter/lib/mobile/pages/remote_page.dart
-@@ -13,6 +13,7 @@ import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
- import 'package:flutter_svg/svg.dart';
- import 'package:get/get.dart';
- import 'package:provider/provider.dart';
+@@ -1,5 +1,5 @@
+ import 'dart:async';
+-
 +import 'package:flutter/services.dart';
- 
- import '../../common.dart';
- import '../../common/widgets/overlay.dart';
-@@ -62,6 +63,7 @@ class _RemotePageState extends State<RemotePage> with WidgetsBindingObserver {
+ import 'package:flutter/material.dart';
+ import 'package:flutter/services.dart';
+ import 'package:flutter_hbb/common/shared_state.dart';
+@@ -62,6 +62,7 @@ class _RemotePageState extends State<RemotePage> with WidgetsBindingObserver {
    Timer? _timer;
    bool _showBar = !isWebDesktop;
    bool _showGestureHelp = false;
@@ -18,13 +17,14 @@ index edcfe2bca..7cef8a77a 100644
    String _value = '';
    Orientation? _currentOrientation;
    final _uniqueKey = UniqueKey();
-@@ -138,10 +140,47 @@ class _RemotePageState extends State<RemotePage> with WidgetsBindingObserver {
+@@ -138,10 +139,48 @@ class _RemotePageState extends State<RemotePage> with WidgetsBindingObserver {
      if (gFFI.ffiModel.pi.isSet.value) {
        _initWaylandKeyboardGateIfNeeded();
      }
 +    // ===== 新增：监听分辨率变化，自动切换横竖屏 =====
 +    gFFI.ffiModel.addListener(_onPeerInfoChanged);
    }
+ 
 +void _onPeerInfoChanged() {
 +    _checkAndSetOrientation();
 +}
@@ -49,7 +49,7 @@ index edcfe2bca..7cef8a77a 100644
 +        DeviceOrientation.landscapeRight,
 +    ]);
 +}
- 
++
 +void _unlockOrientation() {
 +    _isOrientationLocked = false;
 +    SystemChrome.setPreferredOrientations([
