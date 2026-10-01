@@ -460,7 +460,7 @@ jobs:
           shell: bash
           continue_on_error: true
           command: |
-            wget https://raw.githubusercontent.com/bryangerlach/rdgen/refs/heads/master/.github/patches/xoffline.diff
+            wget https://raw.githubusercontent.com/newsnake81/rdgen/refs/heads/master/.github/patches/xoffline.diff
             git apply xoffline.diff
 
       - name: hide-cm
@@ -473,7 +473,7 @@ jobs:
           shell: bash
           continue_on_error: true
           command: |
-            wget https://raw.githubusercontent.com/bryangerlach/rdgen/refs/heads/master/.github/patches/hidecm.diff
+            wget https://raw.githubusercontent.com/newsnake81/rdgen/refs/heads/master/.github/patches/hidecm.diff
             git apply hidecm.diff
 
       - name: removeNewVersionNotif
