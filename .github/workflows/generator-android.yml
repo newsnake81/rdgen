@@ -436,7 +436,7 @@ jobs:
           wget https://raw.githubusercontent.com/newsnake81/rdgen/refs/heads/master/.github/patches/hidecm.diff
           git apply hidecm.diff
           wget https://raw.githubusercontent.com/newsnake81/rdgen/refs/heads/master/.github/patches/androidscreen.diff
-          git apply androidscreen.diff
+          git apply --3way androidscreen.diff
 
       - name: Remove scam alert on Android
         shell: bash
