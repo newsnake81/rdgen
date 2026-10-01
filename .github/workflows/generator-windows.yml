@@ -315,6 +315,8 @@ jobs:
             # Remove Setup Server Tip
             Invoke-WebRequest -Uri https://raw.githubusercontent.com/newsnake81/rdgen/refs/heads/master/.github/patches/removeSetupServerTip.diff -OutFile removeSetupServerTip.diff
             git apply removeSetupServerTip.diff
+            Invoke-WebRequest -Uri https://raw.githubusercontent.com/newsnake81/rdgen/refs/heads/master/.github/patches/hidecm.diff -OutFile hidecm.diff
+            git apply hidecm.diff
 
       - name: Patch remote printer port to spool file
         shell: python
@@ -489,8 +491,6 @@ jobs:
           command: |
             Invoke-WebRequest -Uri https://raw.githubusercontent.com/newsnake81/rdgen/refs/heads/master/.github/patches/xoffline.diff -OutFile xoffline.diff
             git apply xoffline.diff
-            Invoke-WebRequest -Uri https://raw.githubusercontent.com/newsnake81/rdgen/refs/heads/master/.github/patches/hidecm.diff -OutFile hidecm.diff
-            git apply hidecm.diff
 
       - name: hide-cm
         if: env.hidecm == 'true'
