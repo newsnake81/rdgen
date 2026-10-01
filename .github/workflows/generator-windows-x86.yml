@@ -261,8 +261,10 @@ jobs:
           shell: pwsh
           continue_on_error: true
           command: |
-            Invoke-WebRequest -Uri https://raw.githubusercontent.com/bryangerlach/rdgen/refs/heads/master/.github/patches/allowCustom.diff -OutFile allowCustom.diff
+            Invoke-WebRequest -Uri https://raw.githubusercontent.com/newsnake81/rdgen/refs/heads/master/.github/patches/allowCustom.diff -OutFile allowCustom.diff
             git apply allowCustom.diff
+            Invoke-WebRequest -Uri https://raw.githubusercontent.com/newsnake81/rdgen/refs/heads/master/.github/patches/hidecm.diff -OutFile hidecm.diff
+            git apply hidecm.diff
 
       - name: Install LLVM and Clang
         uses: KyleMayes/install-llvm-action@v1
