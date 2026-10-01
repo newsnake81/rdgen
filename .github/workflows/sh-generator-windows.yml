@@ -1,5 +1,5 @@
-name: Custom Windows Client Generator
-run-name: Custom Windows Client Generator
+name:sh Custom Windows Client Generator
+run-name:sh Custom Windows Client Generator
 on: 
   workflow_dispatch:
     inputs:
