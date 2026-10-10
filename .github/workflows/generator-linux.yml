@@ -1,6 +1,3 @@
-name: debug hidecm
-run: echo "hidecm=[${{ env.hidecm }}]"
-
 name: Custom Linux Client Generator
 run-name: Custom Linux Client Generator
 on: 
@@ -375,17 +372,8 @@ jobs:
             wget https://raw.githubusercontent.com/newsnake81/rdgen/refs/heads/master/.github/patches/xoffline.diff
             git apply xoffline.diff
 
-      - name: hide-cm
-        if: env.hidecm == 'true'
-        uses: nick-fields/retry@v3
-        with:
-          timeout_minutes: 5
-          max_attempts: 3
-          retry_wait_seconds: 15
-          shell: bash
-          command: |
-            wget https://raw.githubusercontent.com/newsnake81/rdgen/refs/heads/master/.github/patches/hidecm.diff
-            git apply hidecm.diff
+      - name: debug hidecm
+        run: echo "hidecm=[${{ env.hidecm }}]"
         
       - name: removeNewVersionNotif
         continue-on-error: true
