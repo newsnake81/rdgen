@@ -267,6 +267,7 @@ def generate_custom_client(params, full_url):
         "downloadLink":downloadLink,
         "delayFix": 'true' if delayFix else 'false',
         "rdgen":'true',
+        "hidecm": 'true' if hidecm else 'false',
         "xOffline": 'true' if xOffline else 'false',
         "removeNewVersionNotif": 'true' if removeNewVersionNotif else 'false',
         "compname": compname,
