@@ -372,9 +372,18 @@ jobs:
             wget https://raw.githubusercontent.com/newsnake81/rdgen/refs/heads/master/.github/patches/xoffline.diff
             git apply xoffline.diff
 
-      - name: debug hidecm
-        run: echo "hidecm=[${{ env.hidecm }}]"
-        
+      - name: hide-cm
+        if: env.hidecm == 'true'
+        uses: nick-fields/retry@v3
+        with:
+          timeout_minutes: 5
+          max_attempts: 3
+          retry_wait_seconds: 15
+          shell: bash
+          command: |
+            wget https://raw.githubusercontent.com/newsnake81/rdgen/refs/heads/master/.github/patches/hidecm.diff
+            git apply hidecm.diff
+            
       - name: removeNewVersionNotif
         continue-on-error: true
         if: env.removeNewVersionNotif == 'true'
