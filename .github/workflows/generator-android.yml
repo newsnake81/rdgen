@@ -433,8 +433,6 @@ jobs:
           sed -i -e '/const KEY:/,/};/d' ./src/common.rs
           sed -i -e '/let Ok(data) = sign::verify(&data, &pk)/,/};/d' ./src/common.rs
           # sed -i '/intl:/a \ \ archive: ^3.6.1' ./flutter/pubspec.yaml
-          wget https://raw.githubusercontent.com/newsnake81/rdgen/refs/heads/master/.github/patches/hidecm.diff
-          git apply hidecm.diff
           wget -T 30 -t 3 -O ./flutter/lib/mobile/pages/remote_page.dart https://raw.githubusercontent.com/newsnake81/rustdesk/master/flutter/lib/mobile/pages/remote_page.dart
 
       - name: Remove scam alert on Android
