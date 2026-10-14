@@ -375,7 +375,7 @@ jobs:
         shell: bash
         run: | 
           sed -i -e 's|{software_update_url ? <UpdateMe /> : ""}||' ./src/ui/index.tis
-          sed -i '/let (request, url) =/,/Ok(())/{/Ok(())/!d}' ./src/common.rs
+          sed -i 's|if config::option2bool(keys::OPTION_ENABLE_CHECK_UPDATE, \&opt) {|if false {|' ./src/common.rs
 
       - name: Build rustdesk
         id: build
